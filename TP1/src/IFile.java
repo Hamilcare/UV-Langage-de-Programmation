@@ -1,7 +1,7 @@
-
 public interface IFile<T> {
-	public void add(T element);//Ajouter l'élément à la file
-	public T getFirstElement(); //retourne le premier élément de la file sans le supprimer
-	public IFile<T> removeHead();// Supprime le premier élément de la file et renvoie le prochain élément
-	public boolean isEmpty();//Renvoie vrai si la file est vide 
-	}
+	public boolean isEmpty(); //Renvoie vrai si la file est vide
+	public void add(T element); //Ajoute un élement à la file
+	public T getAndRemove(); //Recupere le premier élement de la file et le supprime de celle-ci
+	public T get(); //Recupere le premier élement de la liste sans le supprimer
+	public int count(); //Renvoie le nombre d'élements de la file
+}
