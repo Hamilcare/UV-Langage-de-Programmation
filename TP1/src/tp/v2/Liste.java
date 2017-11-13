@@ -2,16 +2,25 @@ package tp.v2;
 
 import java.util.Iterator;
 
+/**
+ * 
+ * @author valentin Quiedeville, Vivien Lauradour
+ * 
+ *         Cette classe décrit le comportement d'une liste immutable
+ * 
+ * @param <E>
+ */
+
 public interface Liste<E> extends Iterable<E> {
 	/*
 	 * Accesseurs
 	 */
 	/**
 	 * 
-	 * @return Aucune idée
+	 * @return true si la liste est vide
 	 */
 	default boolean casVide() {
-		return false;
+		return Boolean.FALSE;
 	}
 
 	/**
@@ -32,10 +41,10 @@ public interface Liste<E> extends Iterable<E> {
 
 	/**
 	 * 
-	 * @return Aucune idée
+	 * @return true si la liste n'est pas vide
 	 */
 	default boolean casCons() {
-		return false;
+		return Boolean.FALSE;
 	}
 
 	/**
@@ -58,22 +67,7 @@ public interface Liste<E> extends Iterable<E> {
 	 * Services
 	 */
 	default Iterator<E> iterator() {
-		// TODO
-		return new Iterator<E>() {
-			@Override
-			public boolean hasNext() {
-				return !(reste().estVide());
-			}
-
-			@Override
-			public E next() {
-				// TODO Auto-generated method stub
-				if (hasNext()) {
-					return reste().tete();
-				}
-				return null;
-			}
-
+		return new IterateurListe<E>(this) {
 		}; // Compléter puis utiliser IterateurListe.
 	}
 
@@ -83,9 +77,10 @@ public interface Liste<E> extends Iterable<E> {
 	 */
 
 	default Liste<E> miroir() {
-		// TODO
+
 		return null;
 	}
+
 	/*
 	 * Fabriques (statiques)
 	 */
@@ -96,7 +91,11 @@ public interface Liste<E> extends Iterable<E> {
 	 */
 	public static <E> Liste<E> vide() {
 		return new Liste<E>() {
-			// TODO Définir les méthodes utiles.
+			@Override
+			public boolean casVide() {
+				return true;
+			}
+
 			@Override
 			public boolean estVide() {
 				return true;
@@ -111,23 +110,25 @@ public interface Liste<E> extends Iterable<E> {
 	 *            la tete de la nouvelle liste
 	 * @param r
 	 *            le reste de la nouvelle liste
-	 * @return une nouvelle liste à partir des paramètres
+	 * @return une nouvelle liste ayant t pour tête et r pour reste
 	 */
 
 	public static <E> Liste<E> cons(E t, Liste<E> r) {
 		return new Liste<E>() {
 
-			public E tete = t;
-			public Liste<E> suite = r;
-
 			@Override
 			public E tete() {
-				return tete;
+				return t;
 			}
 
 			@Override
 			public Liste<E> reste() {
-				return suite;
+				return r;
+			}
+
+			@Override
+			public boolean casCons() {
+				return true;
 			}
 
 			@Override

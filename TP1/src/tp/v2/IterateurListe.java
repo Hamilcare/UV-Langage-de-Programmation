@@ -4,17 +4,22 @@ import java.util.Iterator;
 
 public class IterateurListe<E> implements Iterator<E> {
 
+	Liste<E> list;
+
+	public IterateurListe(Liste<E> l) {
+		list = l;
+	}
+
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		//reste().estvide();
-		return false;
+		return !list.estVide();
 	}
 
 	@Override
 	public E next() {
-		// TODO Auto-generated method stub
-		return null;
+		E resul = list.tete();
+		list = list.reste();
+		return resul;
 	}
 
 }
