@@ -59,7 +59,22 @@ public interface Liste<E> extends Iterable<E> {
 	 */
 	default Iterator<E> iterator() {
 		// TODO
-		return null; // Compléter puis utiliser IterateurListe.
+		return new Iterator<E>() {
+			@Override
+			public boolean hasNext() {
+				return !(reste().estVide());
+			}
+
+			@Override
+			public E next() {
+				// TODO Auto-generated method stub
+				if (hasNext()) {
+					return reste().tete();
+				}
+				return null;
+			}
+
+		}; // Compléter puis utiliser IterateurListe.
 	}
 
 	/**

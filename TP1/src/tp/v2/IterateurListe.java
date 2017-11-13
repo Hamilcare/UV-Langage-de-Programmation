@@ -7,6 +7,7 @@ public class IterateurListe<E> implements Iterator<E> {
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
+		//reste().estvide();
 		return false;
 	}
 
