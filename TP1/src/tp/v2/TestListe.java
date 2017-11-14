@@ -93,6 +93,43 @@ public class TestListe {
 		while (i.hasNext())
 			System.out.println(i.next());
 
+		System.out.println("\n\n*******************");
+		System.out.println("***File mutable***");
+		System.out.println("*******************");
+
+		System.out.println("Creation d'une file mutable vide");
+		ImplementationFileMutable<Integer> FileM1 = ImplementationFileMutable.Fabrique.creer();
+		System.out.println("Affichage \"\" ?" + FileM1.representation());
+
+		System.out.println("On ajoute 1 dans cette file");
+		FileM1.ajout(1);
+		System.out.println("Representation 1 ? " + FileM1.representation());
+		System.out.println("Taille de cette file 1 ? " + FileM1.taille());
+		System.out.println("Taille de cette file.suivants() 0 ? " + FileM1.suivants().taille());
+		System.out.println("Taille de cette file.copie() 1 ? " + FileM1.creerCopie().taille());
+		System.out.println("Taille de cette file.copie().suivants() 0 ? " + FileM1.creerCopie().suivants().taille());
+
+		System.out.println("On ajoute 2 dans cette file");
+		FileM1.ajout(2);
+		System.out.println("Taille de cette file 2 ? " + FileM1.taille());
+		System.out.println("Taille de cette file.suivants() 1 ? " + FileM1.suivants().taille());
+		System.out.println("Representation : " + FileM1.representation());
+
+		System.out.println("Creation d'une file contenant les entiers de 3 a 10");
+		ImplementationFileMutable<Integer> FileM2 = ImplementationFileMutable.Fabrique.creer();
+		for (int index = 3; index <= 10; index++) {
+			FileM2.ajout(index);
+		}
+		System.out.println("Représentation 3 4 5 6 7 8 9 10 ? " + FileM2.representation());
+
+		System.out.println("retrait du premier element de cette liste");
+		FileM2.retrait();
+		System.out.println("Représentation 4 5 6 7 8 9 10 ? " + FileM2.representation());
+
+		System.out.println("Fusion des deux liste précédement créées ");
+		FileM1.ajout(FileM2);
+		System.out.println("Representation 1 2 4 5 6 7 8 9 10 ? " + FileM1.representation());
+
 	}
 
 }

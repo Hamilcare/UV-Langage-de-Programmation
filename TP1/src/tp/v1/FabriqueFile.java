@@ -1,7 +1,7 @@
-import java.awt.*;
+package tp.v1;
 
-public class FabriqueFile<T> implements IFabriqueFile<T>{
-	public FabriqueFile(){
+public class FabriqueFile<T> implements IFabriqueFile<T> {
+	public FabriqueFile() {
 	}
 
 	//From fabrique

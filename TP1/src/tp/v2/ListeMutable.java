@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 /**
  * 
- * @author valentin Quiedeville, Vivien Lauradour
+ * @author valentin Quiedeville, Vivien Louradour
  * 
  *         Cette classe décrit le comportement d'une liste mutable
  * 
@@ -56,9 +56,10 @@ public interface ListeMutable<E> extends Liste<E> {
 			E tmp = (E) i.next();
 			resul = ListeMutable.cons(tmp, resul);
 		}
-
-		this.changerTete(resul.tete());
-		this.changerReste(resul.reste());
+		if (!this.estVide()) {
+			this.changerTete(resul.tete());
+			this.changerReste(resul.reste());
+		}
 		return resul;// Pourquoi la methode miroir d'une liste mutable n'est pas void ?
 	}
 
@@ -75,6 +76,11 @@ public interface ListeMutable<E> extends Liste<E> {
 		return new ListeMutable<E>() {
 			E tete = t;
 			ListeMutable<E> reste = r;
+
+			@Override
+			public boolean casCons() {
+				return Boolean.TRUE;
+			}
 
 			@Override
 			public E tete() {
@@ -98,16 +104,22 @@ public interface ListeMutable<E> extends Liste<E> {
 
 			@Override
 			public int taille() {
-				return 1 + r.taille();
+				return 1 + this.reste.taille();
 			}
 
 			@Override
 			public ListeMutable<E> ajouter(E element) {
+
 				ListeMutable<E> tmp = this.reste();
+
 				tmp = reste.miroir();
+
 				tmp = ListeMutable.cons(element, tmp);
+
 				tmp.miroir();
+
 				this.changerReste(tmp);
+
 				return this;
 			}
 
@@ -120,8 +132,17 @@ public interface ListeMutable<E> extends Liste<E> {
 	 */
 	public static <E> ListeMutable<E> vide() {
 		return new ListeMutable<E>() {
+			E tete;
+			ListeMutable<E> reste;
+
+			@Override
 			public boolean casVide() {
 				return Boolean.TRUE;
+			}
+
+			@Override
+			public int taille() {
+				return 0;
 			}
 		};
 	}
