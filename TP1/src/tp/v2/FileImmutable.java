@@ -1,5 +1,12 @@
 package tp.v2;
 
+/**
+ * 
+ * @author Vivien Louradour, Valentin Quiedeville
+ * 
+ *         Interface fournissant les services d'une file immutable
+ * @param <E>
+ */
 public interface FileImmutable<E> extends File<E> {
 
 	/*

@@ -1,5 +1,12 @@
 package tp.v2;
 
+/**
+ * 
+ * @author Vivien Louradour, Valentin Quiedeville
+ * 
+ *         Interface fournissant les services d'une file
+ * @param <E>
+ */
 public interface File<E> extends Iterable<E> {
 
 	/*
@@ -78,7 +85,7 @@ public interface File<E> extends Iterable<E> {
 			resul += this.premier().toString();
 			File<E> tmp = this.suivants();
 			while (!tmp.estVide()) {
-				resul += tmp.premier().toString();
+				resul += " " + tmp.premier().toString();
 				tmp = tmp.suivants();
 			}
 		}

@@ -1,5 +1,12 @@
 package tp.v2;
 
+/**
+ * 
+ * @author Vivien Louradour, Valentin Quiedeville
+ * 
+ *         Interface fournissant les services d'une file mutable
+ * @param <E>
+ */
 public interface FileMutable<E> extends File<E> {
 
 	/*
@@ -7,8 +14,9 @@ public interface FileMutable<E> extends File<E> {
 	 */
 	@Override
 	default FileMutable<E> suivants() {
-		this.retirer();
-		return this;
+		FileMutable<E> resul = this.creerCopie();
+		resul.retirer();
+		return resul;
 	}
 
 	void ajouter(E element);
@@ -47,6 +55,6 @@ public interface FileMutable<E> extends File<E> {
 	}
 
 	// Complexité en O(1).
-	void ajouter(File<E> secondeFile);
+	//void ajouter(File<E> secondeFile);
 
 }
