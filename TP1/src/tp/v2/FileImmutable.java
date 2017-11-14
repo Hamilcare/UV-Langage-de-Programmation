@@ -1,4 +1,4 @@
-package tp.v2;
+package session2.tp.v2;
 
 public interface FileImmutable<E> extends File<E> {
 

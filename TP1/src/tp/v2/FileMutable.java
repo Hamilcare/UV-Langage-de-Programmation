@@ -1,4 +1,4 @@
-package tp.v2;
+package session2.tp.v2;
 
 public interface FileMutable<E> extends File<E> {
 
@@ -7,7 +7,6 @@ public interface FileMutable<E> extends File<E> {
 	 */
 	@Override
 	default FileMutable<E> suivants() {
-		// TODO
 		return null;
 	}
 
@@ -39,7 +38,7 @@ public interface FileMutable<E> extends File<E> {
 
 	// Complexité O(|secondeFile|)
 	@Override
-	default FileMutable<E> ajout(File<E> secondeFile) {
+	default FileMutable<E> ajout(File<E> secondeFile){
 		for (E element : secondeFile) {
 			this.ajouter(element);
 		}
@@ -48,5 +47,4 @@ public interface FileMutable<E> extends File<E> {
 
 	// Complexité en O(1).
 	void ajouter(File<E> secondeFile);
-
 }
