@@ -126,6 +126,16 @@ public interface Liste<E> extends Iterable<E> {
 				return true;
 			}
 
+			@Override
+			public Liste<E> reste() {
+				return Liste.vide();
+			}
+
+			@Override
+			public Liste<E> ajouter(E element) {
+				return Liste.cons(element, Liste.vide());
+			}
+
 		};
 	}
 

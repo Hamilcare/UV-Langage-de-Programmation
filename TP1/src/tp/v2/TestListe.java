@@ -130,6 +130,42 @@ public class TestListe {
 		FileM1.ajout(FileM2);
 		System.out.println("Representation 1 2 4 5 6 7 8 9 10 ? " + FileM1.representation());
 
+		System.out.println("\n\n*******************");
+		System.out.println("***File Immutable***");
+		System.out.println("*******************");
+
+		System.out.println("Creation d'une file immutable vide");
+		FileImmutable<Integer> fileIm1 = ImplementationFileImmutable.Fabrique.creer();
+
+		System.out.println("Affichage \"\" ?" + fileIm1.representation());
+
+		System.out.println("On ajoute 1 dans cette file");
+		fileIm1 = fileIm1.ajout(1);
+		System.out.println("Representation 1 ? " + fileIm1.representation());
+		System.out.println("Taille de cette file 1 ? " + fileIm1.taille());
+		System.out.println("Taille de cette file.suivants() 0 ? " + fileIm1.suivants().taille());
+
+		System.out.println("On ajoute 2 dans cette file");
+		fileIm1 = fileIm1.ajout(2);
+		System.out.println("Taille de cette file 2 ? " + fileIm1.taille());
+		System.out.println("Taille de cette file.suivants() 1 ? " + fileIm1.suivants().taille());
+		System.out.println("Representation : " + fileIm1.representation());
+
+		System.out.println("Creation d'une file contenant les entiers de 3 a 10");
+		FileImmutable<Integer> fileIm2 = ImplementationFileImmutable.Fabrique.creer();
+		for (int index = 3; index <= 10; index++) {
+			fileIm2 = fileIm2.ajout(index);
+		}
+		System.out.println("Représentation 3 4 5 6 7 8 9 10 ? " + fileIm2.representation());
+
+		System.out.println("retrait du premier element de cette liste");
+		fileIm2.retrait();
+		System.out.println("Représentation 4 5 6 7 8 9 10 ? " + fileIm2.representation());
+
+		System.out.println("Fusion des deux liste précédement créées ");
+		fileIm1 = fileIm1.ajout(fileIm2);
+		System.out.println("Representation 1 2 4 5 6 7 8 9 10 ? " + fileIm1.representation());
+
 	}
 
 }

@@ -32,7 +32,7 @@ public interface FileImmutable<E> extends File<E> {
 	 * 
 	 * @param file
 	 * @param dernier
-	 * @return une nouvelle fille qui est la concatenation de file et de dernier
+	 * @return une nouvelle file qui est la concatenation de file et de dernier
 	 *         Une fabrique de ce type était fourni dans liste, nous ne voyons
 	 *         pas comment implémenter ajout sans elle
 	 */
@@ -53,7 +53,7 @@ public interface FileImmutable<E> extends File<E> {
 			resul = creer(resul, tmp.premier());
 			tmp = tmp.suivants();
 		}
-		resul.creer(resul, dernierDansFile);
+		resul = creer(resul, dernierDansFile);
 		return resul;
 	}
 
