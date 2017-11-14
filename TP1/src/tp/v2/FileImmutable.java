@@ -2,41 +2,68 @@ package tp.v2;
 
 public interface FileImmutable<E> extends File<E> {
 
-    /*
-     * Accesseurs
-     */
-    FileImmutable<E> suivants();
+	/*
+	 * Accesseurs
+	 */
+	@Override
+	FileImmutable<E> suivants();
 
-    /*
-     * Fabriques
-     */
-    FileImmutable<E> creer();
+	/*
+	 * Fabriques
+	 */
+	@Override
+	FileImmutable<E> creer();
 
-    FileImmutable<E> creer(E dernier);
+	/**
+	 * 
+	 * @param dernier
+	 * @return une nouvelle File avec dernier comme seul element
+	 */
+	FileImmutable<E> creer(E dernier);
 
-    /*
-     * Services
-     */
-    @Override
-    default FileImmutable<E> ajout(E dernierDansFile) {
-	// TODO
-	return null;
-    }
+	/**
+	 * 
+	 * @param file
+	 * @param dernier
+	 * @return une nouvelle fille qui est la concatenation de file et de dernier
+	 *         Une fabrique de ce type était fourni dans liste, nous ne voyons
+	 *         pas comment implémenter ajout sans elle
+	 */
+	FileImmutable<E> creer(FileImmutable<E> file, E dernier);
 
-    @Override
-    default FileImmutable<E> retrait() {
-	// TODO
-	return null;
-    }
+	/*
+	 * Services
+	 */
+	@Override
+	default FileImmutable<E> ajout(E dernierDansFile) {
 
-    // Complexité O(|secondeFile|)
-    @Override
-    default FileImmutable<E> ajout(File<E> secondeFile) {
-	FileImmutable<E> r = this;
-	for (E e : secondeFile) {
-	    r = r.ajout(e);
+		if (estVide()) {
+			return creer(dernierDansFile);
+		}
+		FileImmutable<E> resul = creer(this.premier());
+		FileImmutable<E> tmp = this.suivants();
+		while (!tmp.estVide()) {
+			resul = creer(resul, tmp.premier());
+			tmp = tmp.suivants();
+		}
+		resul.creer(resul, dernierDansFile);
+		return resul;
 	}
-	return r;
-    }
+
+	@Override
+	default FileImmutable<E> retrait() {
+
+		return this.suivants();
+	}
+
+	// Complexité O(|secondeFile|)
+	@Override
+	default FileImmutable<E> ajout(File<E> secondeFile) {
+		FileImmutable<E> r = this;
+		for (E e : secondeFile) {
+			r = r.ajout(e);
+		}
+		return r;
+	}
 
 }

@@ -2,41 +2,107 @@ package tp.v2;
 
 public interface File<E> extends Iterable<E> {
 
-    /*
-     * Accesseurs
-     */
-    E premier();
+	/*
+	 * Accesseurs
+	 */
+	/**
+	 * 
+	 * @return Le premier element de la file
+	 */
+	E premier();
 
-    File<E> suivants();
+	/**
+	 * 
+	 * @return Une file repr�sentant le file priv�e de son premier �l�ment
+	 */
+	File<E> suivants();
 
-    default boolean estVide() {
-	return this.taille() == 0;
-    }
+	/**
+	 * 
+	 * @return true si la file est vide
+	 */
+	default boolean estVide() {
+		return this.taille() == 0;
+	}
 
-    int taille();
+	/**
+	 * 
+	 * @return la taille de la file
+	 */
+	int taille();
 
-    /*
-     * Fabriques
-     */
-    File<E> creer();
+	/*
+	 * Fabriques
+	 */
+	/**
+	 * 
+	 * @return une nouvelle file vide
+	 */
+	File<E> creer();
 
-    /*
-     * Services
-     */
-    File<E> ajout(E dernierDansFile);
+	/*
+	 * Services
+	 */
+	/**
+	 * 
+	 * @param dernierDansFile
+	 *            �l�ment ajouter en fin de file
+	 * @return une nouvelle file avec dernier dans file � la fin
+	 */
+	File<E> ajout(E dernierDansFile);
 
-    File<E> retrait();
+	/**
+	 * 
+	 * @return Une nouvelle file �gale � la file courante priv� de son premier
+	 *         �l�ment
+	 */
+	File<E> retrait();
 
-    File<E> ajout(File<E> secondeFile);
+	/**
+	 * 
+	 * @param secondeFile
+	 *            File a ajouter en fin de la file courante
+	 * @return Une nouvelle file reprenant la file courante � laquelle est
+	 *         ajout�e la file pass� en param�tre
+	 */
+	File<E> ajout(File<E> secondeFile);
 
-    default String representation() {
-	// TODO
-	return "";
-    }
+	/**
+	 * 
+	 * @return toString
+	 */
+	default String representation() {
 
-    default boolean estEgal(File<E> file) {
-	// TODO
-	return true;
-    }
+		String resul = "";
+		if (!this.estVide()) {
+			resul += this.premier().toString();
+			File<E> tmp = this.suivants();
+			while (!tmp.estVide()) {
+				resul += tmp.premier().toString();
+				tmp = tmp.suivants();
+			}
+		}
+		return resul;
+	}
+
+	/**
+	 * 
+	 * @param file
+	 * @return equals
+	 */
+	default boolean estEgal(File<E> file) {
+
+		boolean result = false;
+		if (this.taille() == file.taille()) {
+
+			result = this.premier().equals(file.premier());
+			File<E> tmp1 = this.suivants();
+			File<E> tmp2 = file.suivants();
+			while (result && !tmp1.estVide()) {
+				result = tmp1.premier().equals(tmp2.premier());
+			}
+		}
+		return result;
+	}
 
 }
