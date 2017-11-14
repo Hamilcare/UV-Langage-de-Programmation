@@ -1,45 +1,42 @@
-package session2.tp.v2;
+package tp.v2;
 
 public interface File<E> extends Iterable<E> {
 
-	/*
-	 * Accesseurs
-	 */
-	E premier();
+    /*
+     * Accesseurs
+     */
+    E premier();
 
-	File<E> suivants();
+    File<E> suivants();
 
-	default boolean estVide() {
-		return this.taille() == 0;
-	}
+    default boolean estVide() {
+	return this.taille() == 0;
+    }
 
-	int taille();
+    int taille();
 
-	/*
-	 * Fabriques
-	 */
-	File<E> creer();
+    /*
+     * Fabriques
+     */
+    File<E> creer();
 
-	/*
-	 * Services
-	 */
-	File<E> ajout(E dernierDansFile);
+    /*
+     * Services
+     */
+    File<E> ajout(E dernierDansFile);
 
-	File<E> retrait();
+    File<E> retrait();
 
-	File<E> ajout(File<E> secondeFile);
+    File<E> ajout(File<E> secondeFile);
 
-	default String representation() {
-		String resul = "";
-		for (E currentElement : this) {
-			resul += currentElement.toString() + " ";
-		}
-		return resul;
-	}
+    default String representation() {
+	// TODO
+	return "";
+    }
 
-	default boolean estEgal(File<E> file) {
-
-		return premier().equals(file.premier()) && suivants().estEgal(file.suivants());
-	}
+    default boolean estEgal(File<E> file) {
+	// TODO
+	return true;
+    }
 
 }
