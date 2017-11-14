@@ -26,6 +26,7 @@ public interface Liste<E> extends Iterable<E> {
 	/**
 	 * 
 	 * @return le premier element de la liste
+	 * 
 	 */
 	default E tete() {
 		throw new UnsupportedOperationException();
@@ -63,6 +64,24 @@ public interface Liste<E> extends Iterable<E> {
 		return this.taille() == 0;
 	}
 
+	/**
+	 * 
+	 * @return une nouvelle liste contenant les éléments de la liste appelante ainsi
+	 *         que l'élément passé en paramètre ajouté à la fin
+	 */
+	default public Liste<E> ajouter(E elementAAjouter) {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @return une nouvelle liste contenant les éléments de la liste appelante ainsi
+	 *         que ajouter tous les éléments de la liste passée en paramètre
+	 */
+	default public Liste<E> ajouter(Liste<E> AAjouter) {
+		throw new UnsupportedOperationException();
+	}
+
 	/*
 	 * Services
 	 */
@@ -77,8 +96,13 @@ public interface Liste<E> extends Iterable<E> {
 	 */
 
 	default Liste<E> miroir() {
-
-		return null;
+		Liste<E> resul = Liste.vide();
+		Iterator i = this.iterator();
+		while (i.hasNext()) {
+			E tmp = (E) i.next();
+			resul = Liste.cons(tmp, resul);
+		}
+		return resul;
 	}
 
 	/*
@@ -134,6 +158,27 @@ public interface Liste<E> extends Iterable<E> {
 			@Override
 			public int taille() {
 				return 1 + r.taille();
+			}
+
+			@Override
+			public Liste<E> ajouter(E element) {
+				Liste<E> resul = vide();
+				resul = this.miroir();
+				resul = cons(element, resul);
+				resul = resul.miroir();
+				return resul;
+			}
+
+			@Override
+			public Liste<E> ajouter(Liste<E> liste) {
+				Liste<E> resul = vide();
+				resul = this.miroir();
+				Iterator i = liste.iterator();
+				while (i.hasNext()) {
+					resul = cons((E) i.next(), resul);
+				}
+				resul = resul.miroir();
+				return resul;
 			}
 
 			// TODO Définir les méthodes utiles.

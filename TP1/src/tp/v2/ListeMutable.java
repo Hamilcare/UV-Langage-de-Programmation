@@ -1,5 +1,7 @@
 package tp.v2;
 
+import java.util.Iterator;
+
 /**
  * 
  * @author valentin Quiedeville, Vivien Lauradour
@@ -43,9 +45,21 @@ public interface ListeMutable<E> extends Liste<E> {
 	/*
 	 * Services
 	 */
+	/**
+	 * 
+	 * @return la liste inversée {1,2,3} ===> {3,2,1}
+	 */
 	default ListeMutable<E> miroir() {
-		// TODO
-		return null;
+		ListeMutable<E> resul = vide();
+		Iterator i = this.iterator();
+		while (i.hasNext()) {
+			E tmp = (E) i.next();
+			resul = ListeMutable.cons(tmp, resul);
+		}
+
+		this.changerTete(resul.tete());
+		this.changerReste(resul.reste());
+		return resul;// Pourquoi la methode miroir d'une liste mutable n'est pas void ?
 	}
 
 	/**
@@ -59,8 +73,13 @@ public interface ListeMutable<E> extends Liste<E> {
 
 	public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r) {
 		return new ListeMutable<E>() {
-			E tete;
-			ListeMutable<E> reste;
+			E tete = t;
+			ListeMutable<E> reste = r;
+
+			@Override
+			public E tete() {
+				return tete;
+			}
 
 			@Override
 			public ListeMutable<E> reste() {
@@ -76,6 +95,22 @@ public interface ListeMutable<E> extends Liste<E> {
 			public void changerReste(ListeMutable<E> r) {
 				this.reste = r;
 			}
+
+			@Override
+			public int taille() {
+				return 1 + r.taille();
+			}
+
+			@Override
+			public ListeMutable<E> ajouter(E element) {
+				ListeMutable<E> tmp = this.reste();
+				tmp = reste.miroir();
+				tmp = ListeMutable.cons(element, tmp);
+				tmp.miroir();
+				this.changerReste(tmp);
+				return this;
+			}
+
 		};
 	}
 
