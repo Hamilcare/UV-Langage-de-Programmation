@@ -7,6 +7,8 @@ import java.util.Iterator;
  * @author Valentin Quiedeville, Vivien Louradour
  *
  * @param <E>
+ * 
+ *            Classe implémentant l'interface FileMutable
  */
 public class ImplementationFileMutable<E> implements FileMutable<E> {
 	ListeMutable<E> liste;

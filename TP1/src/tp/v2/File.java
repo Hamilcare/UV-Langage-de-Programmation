@@ -53,15 +53,15 @@ public interface File<E> extends Iterable<E> {
 	/**
 	 * 
 	 * @param dernierDansFile
-	 *            �l�ment ajouter en fin de file
+	 *            élément ajouter en fin de file
 	 * @return une nouvelle file avec dernier dans file � la fin
 	 */
 	File<E> ajout(E dernierDansFile);
 
 	/**
 	 * 
-	 * @return Une nouvelle file �gale � la file courante priv� de son premier
-	 *         �l�ment
+	 * @return Une nouvelle file égale à la file courante privée de son premier
+	 *         élément
 	 */
 	File<E> retrait();
 
