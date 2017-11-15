@@ -113,7 +113,7 @@ public class TestListe {
 		FileM1.ajout(2);
 		System.out.println("Taille de cette file 2 ? " + FileM1.taille());
 		System.out.println("Taille de cette file.suivants() 1 ? " + FileM1.suivants().taille());
-		System.out.println("Representation : " + FileM1.representation());
+		System.out.println("Representation 1 2 ? " + FileM1.representation());
 
 		System.out.println("Creation d'une file contenant les entiers de 3 a 10");
 		ImplementationFileMutable<Integer> FileM2 = ImplementationFileMutable.Fabrique.creer();
@@ -159,7 +159,7 @@ public class TestListe {
 		System.out.println("Représentation 3 4 5 6 7 8 9 10 ? " + fileIm2.representation());
 
 		System.out.println("retrait du premier element de cette liste");
-		fileIm2.retrait();
+		fileIm2 = fileIm2.retrait();
 		System.out.println("Représentation 4 5 6 7 8 9 10 ? " + fileIm2.representation());
 
 		System.out.println("Fusion des deux liste précédement créées ");

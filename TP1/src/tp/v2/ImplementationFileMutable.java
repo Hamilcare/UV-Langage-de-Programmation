@@ -53,7 +53,7 @@ public class ImplementationFileMutable<E> implements FileMutable<E> {
 		} else {
 			liste = ListeMutable.cons(liste.reste().tete(), liste.reste().reste());
 		}
-		fin.reste();
+		//fin.reste();
 
 	}
 

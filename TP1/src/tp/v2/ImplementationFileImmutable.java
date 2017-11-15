@@ -28,7 +28,7 @@ public class ImplementationFileImmutable<E> implements FileImmutable<E> {
 		ImplementationFileImmutable<E> resul = ImplementationFileImmutable.Fabrique.creer();
 
 		resul.debut = this.debut.reste();
-		resul.fin = this.debut.miroir();
+		resul.fin = this.debut.reste().miroir();
 		return resul;
 
 	}

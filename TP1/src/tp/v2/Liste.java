@@ -66,8 +66,8 @@ public interface Liste<E> extends Iterable<E> {
 
 	/**
 	 * 
-	 * @return une nouvelle liste contenant les éléments de la liste appelante
-	 *         ainsi que l'élément passé en paramètre ajouté à la fin
+	 * @return une nouvelle liste contenant les éléments de la liste appelante ainsi
+	 *         que l'élément passé en paramètre ajouté à la fin
 	 */
 	default public Liste<E> ajouter(E elementAAjouter) {
 		throw new UnsupportedOperationException();
@@ -75,9 +75,8 @@ public interface Liste<E> extends Iterable<E> {
 
 	/**
 	 * 
-	 * @return une nouvelle liste contenant les éléments de la liste appelante
-	 *         ainsi que ajouter tous les éléments de la liste passée en
-	 *         paramètre
+	 * @return une nouvelle liste contenant les éléments de la liste appelante ainsi
+	 *         que ajouter tous les éléments de la liste passée en paramètre
 	 */
 	default public Liste<E> ajouter(Liste<E> AAjouter) {
 		throw new UnsupportedOperationException();

@@ -1,4 +1,29 @@
-TP2
-Les Liste sont implémentées dans les interfaces au moyen de classes anonymes, les files, elles, disposent de leur propres implémentations
+#TP2
+## Principes de conception
+Les Liste sont implémentées dans les interfaces au moyen de classes anonymes.
+Les files, elles, disposent de leurs propres implémentations.
 
-Les methodes définies nous mêmes 
+## Les listes sont implémentées au moyen du pattern composite, en effet pour chaque liste
+on dispose d'une classe listeVide et d'une classe ListeNonVide
+
+## Principes de nommages suivis
+Comme suggéré en cours, les methodes définies nous même ont un nom français
+Les methodes héritées d'une librairie ont un nom anglais (Notamment Iterator)
+
+## Complexité des opérations
+Immutable : la complexité est en o(N) au mieux et o(N²) en moyenne
+Mutable : la complexité est en o(1) au mieux et o(N) en moyenne
+Affichage produit par le test de performance : 
+****************************
+***Comparaison Performace***
+****************************
+Pour tester nos implémentations nous allons créer une file dans laquelle nous allons ajouter tous les entiers de 0 à 99 puis les retirer
+FILE IMMUTABLE
+class tp.v2.ImplementationFileImmutable - ajout/retrait: 1177
+FILE MUTABLE
+class tp.v2.ImplementationFileMutable - ajout/retrait: 9
+
+## Guide pour lancer les tests
+Pour tester le fonctionnent des implémentations des files et listes il suffit d'executer la 
+methode main de la classe TestImplémentation
+Pour tester les performances, il suffit de lancer la methode main de la classe testPerf
