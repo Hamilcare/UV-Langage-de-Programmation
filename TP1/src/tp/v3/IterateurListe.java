@@ -1,11 +1,14 @@
 package tp.v3;
 
+import session2.tp.v2.Liste;
+
 import java.util.Iterator;
 
-public class IterateurListeGenerique<E> implements Iterator<E> {
+public class IterateurListe<E> implements Iterator<E> {
+
 	ListeGenerique<E> list;
 
-	public IterateurListeGenerique(ListeGenerique<E> l) {
+	public IterateurListe(ListeGenerique<E> l) {
 		list = l;
 	}
 
