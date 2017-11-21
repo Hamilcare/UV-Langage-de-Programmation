@@ -25,7 +25,9 @@ public interface EtatFile<K extends EtatFile<K, E>, E> {
 	 * 
 	 * @return true si la file est vide
 	 */
-	boolean estVide();
+	default boolean estVide() {
+		return taille() > 0;
+	}
 
 	/**
 	 * 
@@ -43,16 +45,8 @@ public interface EtatFile<K extends EtatFile<K, E>, E> {
 
 	/**
 	 * 
-	 * @param dernierDansFile
-	 * @return l'état courant avec dernierDansFile à la fin
+	 * @return la taille de la file représentée par l'état
 	 */
-	public K ajout(E dernierDansFile);
-
-	/**
-	 * 
-	 * @return l'état courant privé de son premier élément
-	 */
-	public K retrait();
 
 	public int taille();
 

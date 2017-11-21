@@ -65,18 +65,6 @@ public class EtatFileImmutableImplementation<E> implements EtatFileImmutable<E> 
 		return taille() > 0;
 	}
 
-	@Override
-	public EtatFileImmutable<E> ajout(E dernierDansFile) {
-
-		return this.creer(dernierDansFile);
-	}
-
-	@Override
-	public EtatFileImmutable<E> retrait() {
-
-		return this.suivants();
-	}
-
 	/*@Override
 	public Iterator<E> iterator() {
 		return new IterateurFile<>(this);
