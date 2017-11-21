@@ -6,25 +6,27 @@ package filRouge.v5;
  *
  * @param <E>
  */
-public interface EtatFileImmutable<E> extends FileImmutable<E> {
+public interface EtatFileImmutable<E> extends EtatFile<EtatFileImmutable<E>, E> {
 
+	/*
 	@Override
-	public EtatFileImmutable<E> suivants();
+	EtatFileImmutable<E> suivants();
+	
+	@Override
+	public EtatFileImmutable<E> ajout(E dernierDansFile);
+	
+	@Override
+	public EtatFileImmutable<E> retrait();
+	*/
 
 	/**
-	 * retourne la taille de la file
+	 * 
+	 * @param dernier
+	 * @return Fabrique un etat formé de l'état cible et d'un nouveau dernier
+	 *         élément
 	 */
-	public int taille();
+	EtatFileImmutable<E> creer(E dernier);
 
-	@Override
-	public EtatFileImmutable<E> creer();
-
-	@Override
-	FileImmutable<E> creer(E dernier);
-
-	@Override
-	default boolean estVide() {
-		return taille() > 0;
-	}
+	EtatFileImmutable<E> creer();
 
 }

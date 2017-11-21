@@ -1,26 +1,17 @@
 package filRouge.v5;
 
-/**
- * 
- * @author valentin Quiedeville, Vivien Louradour
- *
- */
-public interface EtatFileMutable<E> extends FileMutable<E> {
+public interface EtatFileMutable<E> extends EtatFile<EtatFileMutable<E>, E> {
 
 	/**
-	 * retourne la taille de la file
+	 * 
+	 * @param element
+	 *            ajouté en fin de file
 	 */
-	public int taille();
+	void ajouter(E element);
 
-	@Override
-	default boolean estVide() {
-		return taille() > 0;
-	}
-
-	@Override
-	public EtatFileMutable<E> creer();
-
-	@Override
-	FileMutable<E> creerCopie();
+	/**
+	 * retire le premier élément de l'état
+	 */
+	void retirer();
 
 }
