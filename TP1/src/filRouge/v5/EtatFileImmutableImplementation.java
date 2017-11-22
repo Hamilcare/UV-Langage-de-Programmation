@@ -5,7 +5,7 @@ import filRouge.v3.ListeImmutable;
 public class EtatFileImmutableImplementation<E> implements EtatFileImmutable<E> {
 	private ListeImmutable<E> listeDebut; // liste de tete dans l'ordre d'arrivée 
 	private ListeImmutable<E> listeFin;// liste de queue dans l'ordre inverse d'arrivée
-	// Invariant : si listeTete vide, alors listeFin vide.
+	//Invariant : si listeTete vide, alors listeFin vide.
 
 	private int taille;
 

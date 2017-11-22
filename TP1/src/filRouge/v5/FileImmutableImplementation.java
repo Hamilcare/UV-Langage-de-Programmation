@@ -14,7 +14,7 @@ public class FileImmutableImplementation<E> implements FileImmutable<E> {
 	@Override
 	public FileImmutable<E> suivants() {
 		FileImmutableImplementation<E> resul = new FileImmutableImplementation<E>();
-		resul.etat = etat.suivants();
+		resul.etat = this.etat.suivants();
 		return resul;
 	}
 

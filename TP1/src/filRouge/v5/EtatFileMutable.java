@@ -6,4 +6,6 @@ public interface EtatFileMutable<E> extends EtatFile<EtatFileMutable<E>, E> {
 
 	EtatFileMutable<E> creerCopie();
 
+	void ajouter(E element);
+
 }

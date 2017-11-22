@@ -1,5 +1,7 @@
 package filRouge.v5;
 
+import java.util.Iterator;
+
 /**
  * 
  * @author valentin Quiedeville, Vivien Louradour
@@ -21,12 +23,6 @@ public interface FileMutable<E>
 	 * retire le premier élément de la liste
 	 */
 	void retirer();
-
-	default FileMutable<E> suivants() {
-		FileMutable<E> resul = this.creerCopie();
-		resul.retirer();
-		return resul;
-	}
 
 	/**
 	 * 
@@ -57,4 +53,8 @@ public interface FileMutable<E>
 		}
 	}
 
+	@Override
+	default public Iterator<E> iterator(){
+		return new IterateurFile<FileMutable<E>, E>(this);
+	}
 }

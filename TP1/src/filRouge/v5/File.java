@@ -1,5 +1,7 @@
 package filRouge.v5;
 
+import java.util.Iterator;
+
 /**
  * 
  * @author valentin Quiedeville, Vivien Louradour
@@ -14,7 +16,7 @@ public interface File<K extends File<K, E>, E> extends Iterable<E>, Mesurable {
 	public K suivants();
 
 	default boolean estVide() {
-		return true;
+		return taille() == 0;
 	}
 
 	//Fabrique

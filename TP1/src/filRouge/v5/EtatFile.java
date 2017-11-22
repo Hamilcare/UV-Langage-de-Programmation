@@ -26,7 +26,7 @@ public interface EtatFile<K extends EtatFile<K, E>, E> {
 	 * @return true si la file est vide
 	 */
 	default boolean estVide() {
-		return taille() > 0;
+		return taille() <= 0;
 	}
 
 	/**
@@ -49,5 +49,4 @@ public interface EtatFile<K extends EtatFile<K, E>, E> {
 	 */
 
 	public int taille();
-
 }

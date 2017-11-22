@@ -1,5 +1,7 @@
 package filRouge.v5;
 
+import java.util.Iterator;
+
 /**
  * 
  * @author valentin Quiedeville, Vivien Louradour
@@ -29,6 +31,11 @@ public interface FileImmutable<E>
 	@Override
 	default public FileImmutable<E> ajout(E dernierDansFile) {
 		return this.creer(dernierDansFile);
+	}
+
+	@Override
+	default public Iterator<E> iterator(){
+		return new IterateurFile<FileImmutable<E>, E>(this);
 	}
 
 }
