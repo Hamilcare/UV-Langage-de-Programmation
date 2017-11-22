@@ -1,7 +1,5 @@
 package tp.v3;
 
-import session2.tp.v2.Liste;
-
 import java.util.Iterator;
 
 public class IterateurListe<E> implements Iterator<E> {

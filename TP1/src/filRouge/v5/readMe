@@ -1,0 +1,22 @@
+Vivien Louradour Valentin Quiedeville
+
+Nous avons déplacé la couche basse dans de nos file dans un objet Etat.
+Cet objet est agrégé dans nos files.
+Les files s'occupent de la couche haute, c'est à dire les services.
+ 
+Les méthodes réalisées nous même sont en français, les méthodes issues de la lib standard sont en anglais
+
+Les opérations sur la file Immutable sont en o(n²)
+Les opérations sur la file Mutable sont en o(n)
+
+Pour lancer les tests, il suffit de lancer la methode main de la classe Test
+
+Voici le retour d'un des tests effectués : 
+
+Ajout et retrait de tous les entiers compris entre 0 et 9999999
+****FileImmutable****
+
+class filRouge.v5.FileImmutableImplementation - ajout/retrait: 9347
+****FileMutable****
+
+class filRouge.v5.FileMutableImplementation - ajout/retrait: 3343

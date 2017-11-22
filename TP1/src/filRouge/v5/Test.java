@@ -5,10 +5,10 @@ import java.lang.management.ThreadMXBean;
 
 public class Test {
 	private static final ThreadMXBean threadBean = ManagementFactory.getThreadMXBean();
-	private static long diviseur = 1000000;
+	private static long diviseur = 100000;
 
 	public static void main(String[] args) {
-		int limite = 100;
+		int limite = 10000000;
 		System.out.println("La methode de test est la suivante : \n");
 		System.out.println("Ajout et retrait de tous les entiers compris entre 0 et " + (limite - 1));
 
@@ -18,25 +18,29 @@ public class Test {
 		for (int i = 0; i < limite; i++) {
 			immut = immut.ajout(i);
 		}
-		System.out.println(immut);
-		System.out.println(immut.taille());
+		//System.out.println(immut);
+		//System.out.println(immut.taille());
 		for (int i = 0; i < limite; i++) {
 			immut = immut.retrait();
 		}
-		System.out.println(immut);
+		//System.out.println(immut);
 		temps = threadBean.getCurrentThreadCpuTime() - temps;
 		System.out.println(immut.getClass() + " - ajout/retrait: " + (temps / diviseur));
 
-		FileMutable<Integer> fm = new FileMutableImplementation<>();
-		fm.ajouter(1);
-		fm.ajouter(2);
-		fm.ajouter(3);
-		fm.retirer();
-		//fm.suivants();
-		Integer premier = fm.premier();
-		for (Integer i : fm) {
-			System.out.println("i = " + i);
+		System.out.println("****FileMutable****\n");
+		temps = threadBean.getCurrentThreadCpuTime();
+		FileMutable<Integer> mut = new FileMutableImplementation<Integer>();
+		for (int i = 0; i < limite; i++) {
+			mut = mut.ajout(i);
 		}
+		//System.out.println(mut);
+		//System.out.println(mut.taille());
+		for (int i = 0; i < limite; i++) {
+			mut = mut.retrait();
+		}
+		//System.out.println(mut);
+		temps = threadBean.getCurrentThreadCpuTime() - temps;
+		System.out.println(mut.getClass() + " - ajout/retrait: " + (temps / diviseur));
 
 	}
 }
