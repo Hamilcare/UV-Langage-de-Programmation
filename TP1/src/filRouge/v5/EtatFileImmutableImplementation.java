@@ -1,7 +1,5 @@
 package filRouge.v5;
 
-import filRouge.v3.ListeImmutable;
-
 public class EtatFileImmutableImplementation<E> implements EtatFileImmutable<E> {
 	private ListeImmutable<E> listeDebut; // liste de tete dans l'ordre d'arrivée 
 	private ListeImmutable<E> listeFin;// liste de queue dans l'ordre inverse d'arrivée
@@ -62,7 +60,20 @@ public class EtatFileImmutableImplementation<E> implements EtatFileImmutable<E> 
 	@Override
 	public boolean estVide() {
 
-		return taille() > 0;
+		return taille() == 0;
+	}
+
+	@Override
+	public String toString() {
+		String s = "[";
+		for (E element : listeDebut) {
+			s = s + element.toString() + " ";
+		}
+		for (E element : listeFin.miroir()) {
+			s = s + element.toString() + " ";
+		}
+		s = s.trim() + "]";
+		return s;
 	}
 
 	/*@Override

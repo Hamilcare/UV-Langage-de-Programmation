@@ -44,4 +44,11 @@ public class FileImmutableImplementation<E> implements FileImmutable<E> {
 		return resul;
 	}
 
+	@Override
+	public String toString() {
+		String s = "";
+		s += etat.toString();
+		return s;
+	}
+
 }
